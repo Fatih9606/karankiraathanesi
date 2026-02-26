@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karan Kıraathanesi</title>
+  <meta name="description" content="Karan Kıraathanesi — demli çay, sohbet, oyun ve sıcak ortam." />
+
+  <style>
+    :root{
+      --bg:#0f0a06;
+      --card:#1a120c;
+      --muted:#c7b9a6;
+      --text:#fff3df;
+      --brand:#f59e0b;
+      --brand2:#22c55e;
+      --ring: rgba(245,158,11,.28);
+      --shadow: 0 12px 30px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 520px at 12% -10%, rgba(245,158,11,.20), transparent 60%),
+        radial-gradient(900px 520px at 88% 0%, rgba(34,197,94,.14), transparent 55%),
+        radial-gradient(900px 520px at 50% 120%, rgba(245,158,11,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px;}
+
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(15,10,6,.92), rgba(15,10,6,.65));
+      border-bottom: 1px solid rgba(199,185,166,.14);
+    }
+
+    .navInner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+
+    .logo{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(245,158,11,.95), rgba(34,197,94,.55));
+      box-shadow: 0 10px 22px rgba(245,158,11,.18);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+    }
+
+    .links{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+
+    .links a{
+      color: var(--muted);
+      font-weight:700;
+      padding:10px 10px;
+      border-radius:12px;
+    }
+
+    .links a:hover{
+      color:var(--text);
+      background: rgba(199,185,166,.08);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(199,185,166,.16);
+      background: rgba(26,18,12,.65);
+      color: var(--text);
+      box-shadow: 0 8px 18px rgba(0,0,0,.28);
+      font-weight:800;
+      cursor:pointer;
+      transition:.18s transform, .18s border, .18s background;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(245,158,11,.35);
+      background: rgba(26,18,12,.92);
+    }
+
+    .btnPrimary{
+      border: 1px solid rgba(245,158,11,.35);
+      background: linear-gradient(135deg, rgba(245,158,11,.22), rgba(34,197,94,.10));
+      box-shadow: 0 10px 22px rgba(245,158,11,.16);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap:22px;
+      padding:34px 0 18px;
+      align-items:stretch;
+    }
+
+    .card{
+      background: rgba(26,18,12,.72);
+      border: 1px solid rgba(199,185,166,.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .heroLeft{padding:26px;}
+
+    .kicker{
+      color: rgba(245,158,11,.95);
+      font-weight:900;
+      letter-spacing:.5px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    h1{
+      margin:10px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.1;
+    }
+
+    .sub{
+      color: var(--muted);
+      font-size:15.5px;
+      line-height:1.65;
+      margin:0 0 16px;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .metaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      border: 1px solid rgba(199,185,166,.16);
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+      background: rgba(15,10,6,.35);
+    }
+
+    .heroRight{
+      padding:18px;
+      display:grid;
+      gap:12px;
+    }
+
+    .stat{
+      padding:16px;
+      border-radius:16px;
+      border: 1px solid rgba(199,185,166,.14);
+      background: rgba(15,10,6,.25);
+    }
+
+    .stat b{font-size:22px;}
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin:18px 0;
+    }
+
+    .section{padding:10px 0 28px;}
+
+    .section h2{
+      margin:0 0 10px;
+      font-size:22px;
+    }
+
+    .section p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.7;
+    }
+
+    .feature{padding:16px;}
+
+    .feature h3{
+      margin:6px 0 6px;
+    }
+
+    .icon{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background: rgba(245,158,11,.12);
+      border:1px solid rgba(245,158,11,.20);
+      color:#ffe6bd;
+      font-weight:900;
+    }
+
+    .price{
+      margin-top:10px;
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(34,197,94,.08));
+      border:1px solid rgba(245,158,11,.26);
+      color:#ffe7b5;
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .box{padding:18px;}
+
+    form{display:grid; gap:10px;}
+
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(199,185,166,.16);
+      background: rgba(15,10,6,.35);
+      color: var(--text);
+      outline:none;
+    }
+
+    input:focus, textarea:focus{
+      border-color: rgba(245,158,11,.55);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+
+    textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .footer{
+      border-top: 1px solid rgba(199,185,166,.14);
+      padding:18px 0 28px;
+      color: var(--muted);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .toast{
+      position: fixed;
+      bottom:18px;
+      left:50%;
+      transform: translateX(-50%);
+      background: rgba(26,18,12,.94);
+      border: 1px solid rgba(199,185,166,.16);
+      color: var(--text);
+      padding:12px 14px;
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      display:none;
+      max-width: min(640px, calc(100% - 24px));
+    }
+
+    .wa{
+      position: fixed;
+      right:16px;
+      bottom:16px;
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(135deg, rgba(245,158,11,.95), rgba(245,158,11,.70));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 34px rgba(245,158,11,.22);
+      font-size:22px;
+    }
+
+    .menuBtn{display:none;}
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr;}
+      .grid3{grid-template-columns:1fr;}
+      .split{grid-template-columns:1fr;}
+      .links{display:none;}
+      .menuBtn{display:inline-flex;}
+      .mobileLinks{display:none; padding:0 18px 14px;}
+      .mobileLinks a{
+        display:block;
+        padding:12px 10px;
+        border-radius:14px;
+        color: var(--muted);
+        font-weight:800;
+      }
+      .mobileLinks a:hover{
+        background: rgba(199,185,166,.08);
+        color: var(--text);
+      }
+    }
+
+    /* --- KÜÇÜK İNCE BELLİ BARDAK, KAŞIK YOK, BUHAR YUKARI --- */
+    .teaCard{
+      position: relative;
+      overflow: hidden;
+    }
+
+    .teaStage{
+      position: relative;
+      height: 210px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      background:
+        radial-gradient(140px 90px at 50% 34%, rgba(245,158,11,.10), transparent 60%),
+        radial-gradient(200px 120px at 50% 120%, rgba(34,197,94,.05), transparent 55%),
+        rgba(15,10,6,.18);
+      border:1px solid rgba(199,185,166,.12);
+      overflow:hidden;
+    }
+
+    .steam{
+      position:absolute;
+      top:12px;
+      width:10px;
+      height:64px;
+      border-radius:999px;
+      background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,.23), rgba(255,255,255,0));
+      opacity:.8;
+      animation: steamUp 2.6s ease-in-out infinite;
+      filter: blur(.2px);
+    }
+
+    .steam.s1{ left: calc(50% - 22px); animation-delay:0s; }
+    .steam.s2{ left: calc(50% - 2px); animation-delay:.55s; }
+    .steam.s3{ left: calc(50% + 18px); animation-delay:1.05s; }
+
+    @keyframes steamUp{
+      0%   { transform: translateY(14px) scale(1); opacity:0; }
+      20%  { opacity:.62; }
+      65%  { opacity:.32; }
+      100% { transform: translateY(-34px) scale(1.18); opacity:0; }
+    }
+
+    .teaGlassWrap{
+      position: relative;
+      width: 98px;
+      height: 152px;
+      margin-top: 12px;
+    }
+
+    .teaGlass{
+      position:absolute;
+      inset: 0 8px 18px 8px;
+      clip-path: polygon(
+        8% 0%,
+        92% 0%,
+        84% 12%,
+        69% 48%,
+        78% 100%,
+        22% 100%,
+        31% 48%,
+        16% 12%
+      );
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 -10px 16px rgba(0,0,0,.12),
+        0 12px 22px rgba(0,0,0,.28);
+      overflow:hidden;
+      border:1px solid rgba(255,243,223,.16);
+    }
+
+    .teaGlassOutline{
+      position:absolute;
+      inset: 0 8px 18px 8px;
+      clip-path: polygon(
+        8% 0%,
+        92% 0%,
+        84% 12%,
+        69% 48%,
+        78% 100%,
+        22% 100%,
+        31% 48%,
+        16% 12%
+      );
+      border:2px solid rgba(255,243,223,.18);
+      pointer-events:none;
+    }
+
+    .teaFill{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:76%;
+      background: linear-gradient(
+        180deg,
+        rgba(255,58,58,.96) 0%,
+        rgba(205,10,10,.94) 38%,
+        rgba(118,0,0,.96) 100%
+      );
+    }
+
+    .teaTop{
+      position:absolute;
+      left:18%;
+      width:64%;
+      top:28px;
+      height:16px;
+      border-radius:999px;
+      background:
+        radial-gradient(60px 14px at 50% 35%, rgba(255,255,255,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,78,78,.95), rgba(160,0,0,.92));
+      border:1px solid rgba(255,220,220,.16);
+      box-shadow: inset 0 5px 8px rgba(0,0,0,.10);
+    }
+
+    .glassShine{
+      position:absolute;
+      left:28%;
+      top:14px;
+      width:7px;
+      height:76px;
+      border-radius:999px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.24), rgba(255,255,255,0));
+      transform: rotate(8deg);
+      pointer-events:none;
+      z-index:4;
+    }
+
+    .glassRim{
+      position:absolute;
+      left:8%;
+      right:8%;
+      top:-1px;
+      height:8px;
+      border-radius:999px;
+      border-top:2px solid rgba(255,255,255,.42);
+      opacity:.7;
+      z-index:5;
+    }
+
+    .bottomGlow{
+      position:absolute;
+      left:28%;
+      right:28%;
+      bottom:20px;
+      height:10px;
+      border-radius:999px;
+      background: radial-gradient(circle at center, rgba(255,255,255,.18), rgba(255,255,255,0));
+      z-index:3;
+    }
+
+    .glassBaseShadow{
+      position:absolute;
+      left:50%;
+      bottom:4px;
+      transform: translateX(-50%);
+      width:74px;
+      height:11px;
+      border-radius:999px;
+      background: rgba(0,0,0,.24);
+      filter: blur(6px);
+      z-index:0;
+    }
+
+    .mobileLinks{display:none;}
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="wrap navInner">
+      <a class="brand" href="#top" aria-label="Ana Sayfa">
+        <div class="logo">🫖</div>
+        <div>
+          <div style="line-height:1">Karan Kıraathanesi</div>
+          <div style="color:var(--muted); font-size:12px; font-weight:800;">Çay • Sohbet • Oyun • Sıcak Ortam</div>
+        </div>
+      </a>
+
+      <div class="links" aria-label="Menü">
+        <a href="#mesrubat">Meşrubat</a>
+        <a href="#hakkinda">Hakkımızda</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+
+      <button class="btn menuBtn" id="menuBtn" type="button">Menü</button>
+    </div>
+
+    <div class="mobileLinks" id="mobileLinks">
+      <div class="wrap">
+        <a href="#mesrubat">Meşrubat</a>
+        <a href="#hakkinda">Hakkımızda</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="card heroLeft">
+        <div class="kicker">Sıcacık çay • Samimi ortam</div>
+        <h1>Demli çayın, sohbetin ve oyunun adresi.</h1>
+        <p class="sub">
+          Karan Kıraathanesi’nde günün yorgunluğunu at: demli çay, kahve ve sıcak içecekler eşliğinde arkadaş ortamı.
+          Okey/kağıt oyunları için ferah masa düzeni, hızlı servis ve temiz mekan.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#iletisim">Rezervasyon / Bilgi</a>
+          <a class="btn" href="#mesrubat">İçecekleri Gör</a>
+        </div>
+
+        <div class="metaRow">
+          <div class="pill">✅ Demli çay</div>
+          <div class="pill">✅ Okey & kağıt</div>
+          <div class="pill">✅ Temiz & ferah</div>
+        </div>
+      </div>
+
+      <div class="card heroRight" aria-label="Özet">
+        <div class="stat teaCard">
+          <div style="color:var(--muted); font-weight:900; margin-bottom:10px;">Demli Çay</div>
+
+          <div class="teaStage" aria-label="İnce belli bardakta çay animasyonu">
+            <div class="steam s1"></div>
+            <div class="steam s2"></div>
+            <div class="steam s3"></div>
+
+            <div class="teaGlassWrap">
+              <div class="glassBaseShadow"></div>
+
+              <div class="teaGlass">
+                <div class="teaFill"></div>
+                <div class="teaTop"></div>
+                <div class="glassShine"></div>
+                <div class="glassRim"></div>
+                <div class="bottomGlow"></div>
+              </div>
+
+              <div class="teaGlassOutline"></div>
+            </div>
+          </div>
+
+          <div style="color:var(--muted); margin-top:10px;">Küçük ince belli bardak • Buhar yukarı çıkar</div>
+        </div>
+
+        <div class="stat">
+          <div style="color:var(--muted); font-weight:900;">Öne çıkan</div>
+          <b>Sıcak İçecekler</b>
+          <div style="color:var(--muted); margin-top:6px;">Çay, Türk kahvesi, nane-limon…</div>
+        </div>
+
+        <div class="stat">
+          <div style="color:var(--muted); font-weight:900;">Ortam</div>
+          <b>Sohbet & Oyun</b>
+          <div style="color:var(--muted); margin-top:6px;">Okey, iskambil, tavla.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mesrubat" class="section">
+      <h2>Çay ve Sıcak Meşrubatlar</h2>
+      <p>Güncel fiyat listesi:</p>
+
+      <div class="grid3">
+        <div class="card feature">
+          <div class="icon">🫖</div>
+          <h3>Çay</h3>
+          <p>Taze dem • ince belli bardak</p>
+          <div class="price">10 Türk Lirası</div>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">☕</div>
+          <h3>Kahve</h3>
+          <p>Filtre / granül seçenekleri</p>
+          <div class="price">10 Türk Lirası</div>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🥃</div>
+          <h3>Oralet</h3>
+          <p>Portakal / kış çayı tadında</p>
+          <div class="price">10 Türk Lirası</div>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🍃</div>
+          <h3>Nane Limon</h3>
+          <p>Sıcak bitki çayı</p>
+          <div class="price">10 Türk Lirası</div>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🍫</div>
+          <h3>Sıcak Çikolata</h3>
+          <p>Kışın favorisi</p>
+          <div class="price">10 Türk Lirası</div>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🧿</div>
+          <h3>Türk Kahvesi</h3>
+          <p>Bol köpüklü</p>
+          <div class="price">30 Türk Lirası</div>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">💧</div>
+          <h3>Su</h3>
+          <p>Soğuk / normal</p>
+          <div class="price">10 Türk Lirası</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hakkinda" class="section">
+      <div class="card box">
+        <h2>Hakkımızda</h2>
+        <p>
+          Karan Kıraathanesi; samimi ortamı, temizliği ve demli çayıyla misafirlerine keyifli vakit sunar.
+          Arkadaş buluşmaları, maç sohbetleri ve oyun keyfi için bekleriz.
+        </p>
+      </div>
+    </section>
+
+    <section id="galeri" class="section">
+      <h2>Galeri</h2>
+      <p>Mekan fotoğrafları ekleyince site çok daha profesyonel görünür (3–6 foto ideal).</p>
+
+      <div class="grid3">
+        <div class="card feature">
+          <h3>Foto 1</h3>
+          <p style="color:var(--muted)">Mekan içi / masa düzeni</p>
+        </div>
+        <div class="card feature">
+          <h3>Foto 2</h3>
+          <p style="color:var(--muted)">Çay servisi</p>
+        </div>
+        <div class="card feature">
+          <h3>Foto 3</h3>
+          <p style="color:var(--muted)">Dış cephe</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim" class="section">
+      <h2>İletişim</h2>
+      <p>WhatsApp’tan hemen yazabilirsin. Form şu an “demo” (konsola yazdırır).</p>
+
+      <div class="split">
+        <div class="card box">
+          <h3>İletişim Bilgileri</h3>
+          <p style="margin-top:8px;">
+            <b>Telefon:</b> <span style="color:var(--muted)">+90 5XX XXX XX XX</span><br/>
+            <b>E-posta:</b> <span style="color:var(--muted)">ornek@site.com</span><br/>
+            <b>Konum:</b> <span style="color:var(--muted)">Balıkesir, TR</span>
+          </p>
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn btnPrimary" href="tel:+905000000000">Ara</a>
+            <a class="btn" href="mailto:ornek@site.com">Mail at</a>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3>Mesaj Gönder</h3>
+          <form id="contactForm">
+            <input name="name" placeholder="Ad Soyad" required />
+            <input name="phone" placeholder="Telefon (opsiyonel)" />
+            <input name="email" type="email" placeholder="E-posta" required />
+            <textarea name="message" placeholder="Mesajın..." required></textarea>
+            <button class="btn btnPrimary" type="submit">Gönder</button>
+          </form>
+          <p style="color:var(--muted); font-size:12px; margin-top:10px;">
+            Not: Yayında KVKK/gizlilik metni eklemek iyi olur.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Karan Kıraathanesi • Tüm hakları saklıdır.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="pill" href="#top">Yukarı</a>
+        <a class="pill" href="#iletisim">İletişim</a>
+      </div>
+    </div>
+  </main>
+
+  <a class="wa" id="waBtn" href="#" aria-label="WhatsApp">💬</a>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileLinks = document.getElementById("mobileLinks");
+
+    menuBtn?.addEventListener("click", () => {
+      const isOpen = mobileLinks.style.display === "block";
+      mobileLinks.style.display = isOpen ? "none" : "block";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const whatsappNumber = "905000000000";
+    const whatsappText = encodeURIComponent("Merhaba, Karan Kıraathanesi için bilgi almak istiyorum.");
+    document.getElementById("waBtn").href = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
+
+    const toast = document.getElementById("toast");
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.style.display = "none";
+      }, 2400);
+    }
+
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      console.log("Form Data:", data);
+      showToast("Mesaj alındı ✅ (Demo) — Konsola yazdırıldı.");
+      form.reset();
+    });
+
+    document.querySelectorAll("#mobileLinks a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileLinks.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>
