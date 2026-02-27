@@ -215,9 +215,7 @@
 
     .feature{padding:16px;}
 
-    .feature h3{
-      margin:6px 0 6px;
-    }
+    .feature h3{ margin:6px 0 6px; }
 
     .icon{
       width:40px;
@@ -243,36 +241,7 @@
       font-size:14px;
     }
 
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top:14px;
-    }
-
     .box{padding:18px;}
-
-    form{display:grid; gap:10px;}
-
-    input, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(199,185,166,.16);
-      background: rgba(15,10,6,.35);
-      color: var(--text);
-      outline:none;
-    }
-
-    input:focus, textarea:focus{
-      border-color: rgba(245,158,11,.55);
-      box-shadow: 0 0 0 4px var(--ring);
-    }
-
-    textarea{
-      min-height:110px;
-      resize:vertical;
-    }
 
     .footer{
       border-top: 1px solid rgba(199,185,166,.14);
@@ -285,42 +254,11 @@
       flex-wrap:wrap;
     }
 
-    .toast{
-      position: fixed;
-      bottom:18px;
-      left:50%;
-      transform: translateX(-50%);
-      background: rgba(26,18,12,.94);
-      border: 1px solid rgba(199,185,166,.16);
-      color: var(--text);
-      padding:12px 14px;
-      border-radius:14px;
-      box-shadow: var(--shadow);
-      display:none;
-      max-width: min(640px, calc(100% - 24px));
-    }
-
-    .wa{
-      position: fixed;
-      right:16px;
-      bottom:16px;
-      width:54px;
-      height:54px;
-      border-radius:18px;
-      display:grid;
-      place-items:center;
-      background: linear-gradient(135deg, rgba(245,158,11,.95), rgba(245,158,11,.70));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 34px rgba(245,158,11,.22);
-      font-size:22px;
-    }
-
     .menuBtn{display:none;}
 
     @media (max-width: 920px){
       .hero{grid-template-columns:1fr;}
       .grid3{grid-template-columns:1fr;}
-      .split{grid-template-columns:1fr;}
       .links{display:none;}
       .menuBtn{display:inline-flex;}
       .mobileLinks{display:none; padding:0 18px 14px;}
@@ -415,7 +353,6 @@
         <a href="#mesrubat">Meşrubat</a>
         <a href="#hakkinda">Hakkımızda</a>
         <a href="#galeri">Galeri</a>
-        <a href="#iletisim">İletişim</a>
       </div>
 
       <button class="btn menuBtn" id="menuBtn" type="button">Menü</button>
@@ -426,7 +363,6 @@
         <a href="#mesrubat">Meşrubat</a>
         <a href="#hakkinda">Hakkımızda</a>
         <a href="#galeri">Galeri</a>
-        <a href="#iletisim">İletişim</a>
       </div>
     </div>
   </div>
@@ -442,8 +378,8 @@
         </p>
 
         <div class="ctaRow">
-          <a class="btn btnPrimary" href="#iletisim">Rezervasyon / Bilgi</a>
-          <a class="btn" href="#mesrubat">İçecekleri Gör</a>
+          <a class="btn btnPrimary" href="#mesrubat">İçecekleri Gör</a>
+          <a class="btn" href="#galeri">Galeri</a>
         </div>
 
         <div class="metaRow">
@@ -571,51 +507,15 @@
       </div>
     </section>
 
-    <section id="iletisim" class="section">
-      <h2>İletişim</h2>
-      <p>WhatsApp’tan hemen yazabilirsin. Form şu an “demo” (konsola yazdırır).</p>
-
-      <div class="split">
-        <div class="card box">
-          <h3>İletişim Bilgileri</h3>
-          <p style="margin-top:8px;">
-            <b>Telefon:</b> <span style="color:var(--muted)">+90 535 334 66 50</span><br/>
-            <b>E-posta:</b> <span style="color:var(--muted)">ornek@site.com</span><br/>
-            <b>Konum:</b> <span style="color:var(--muted)">Balıkesir, TR</span>
-          </p>
-          <div class="ctaRow" style="margin-top:14px;">
-            <a class="btn btnPrimary" href="tel:+905353346650">Ara</a>
-            <a class="btn" href="mailto:ornek@site.com">Mail at</a>
-          </div>
-        </div>
-
-        <div class="card box">
-          <h3>Mesaj Gönder</h3>
-          <form id="contactForm">
-            <input name="name" placeholder="Ad Soyad" required />
-            <input name="phone" placeholder="Telefon (opsiyonel)" />
-            <input name="email" type="email" placeholder="E-posta" required />
-            <textarea name="message" placeholder="Mesajın..." required></textarea>
-            <button class="btn btnPrimary" type="submit">Gönder</button>
-          </form>
-          <p style="color:var(--muted); font-size:12px; margin-top:10px;">
-            Not: Yayında KVKK/gizlilik metni eklemek iyi olur.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <div class="footer">
       <div>© <span id="year"></span> Karan Kıraathanesi • Tüm hakları saklıdır.</div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <a class="pill" href="#top">Yukarı</a>
-        <a class="pill" href="#iletisim">İletişim</a>
+        <a class="pill" href="#mesrubat">Meşrubat</a>
+        <a class="pill" href="#galeri">Galeri</a>
       </div>
     </div>
   </main>
-
-  <a class="wa" id="waBtn" href="#" aria-label="WhatsApp">💬</a>
-  <div class="toast" id="toast"></div>
 
   <script>
     const menuBtn = document.getElementById("menuBtn");
@@ -628,29 +528,6 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const whatsappNumber = "905353346650";
-    const whatsappText = encodeURIComponent("Merhaba, Karan Kıraathanesi için bilgi almak istiyorum.");
-    document.getElementById("waBtn").href = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
-
-    const toast = document.getElementById("toast");
-    function showToast(msg){
-      toast.textContent = msg;
-      toast.style.display = "block";
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => {
-        toast.style.display = "none";
-      }, 2400);
-    }
-
-    const form = document.getElementById("contactForm");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
-      console.log("Form Data:", data);
-      showToast("Mesaj alındı ✅ (Demo) — Konsola yazdırıldı.");
-      form.reset();
-    });
-
     document.querySelectorAll("#mobileLinks a").forEach(a => {
       a.addEventListener("click", () => {
         mobileLinks.style.display = "none";
@@ -659,5 +536,3 @@
   </script>
 </body>
 </html>
-
-
