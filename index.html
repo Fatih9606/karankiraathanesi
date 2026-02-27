@@ -337,11 +337,8 @@
       }
     }
 
-    /* --- KÜÇÜK İNCE BELLİ BARDAK, KAŞIK YOK, BUHAR YUKARI --- */
-    .teaCard{
-      position: relative;
-      overflow: hidden;
-    }
+    /* --- DEMLİ ÇAY: RESİM BARDAK + BUHAR --- */
+    .teaCard{ position: relative; overflow: hidden; }
 
     .teaStage{
       position: relative;
@@ -360,6 +357,7 @@
     .steam{
       position:absolute;
       top:12px;
+      left:50%;
       width:10px;
       height:64px;
       border-radius:999px;
@@ -367,140 +365,35 @@
       opacity:.8;
       animation: steamUp 2.6s ease-in-out infinite;
       filter: blur(.2px);
+      --x: 0px;
     }
-
-    .steam.s1{ left: calc(50% - 22px); animation-delay:0s; }
-    .steam.s2{ left: calc(50% - 2px); animation-delay:.55s; }
-    .steam.s3{ left: calc(50% + 18px); animation-delay:1.05s; }
+    .steam.s1{ --x:-22px; animation-delay:0s; }
+    .steam.s2{ --x:-2px;  animation-delay:.55s; }
+    .steam.s3{ --x:18px;  animation-delay:1.05s; }
 
     @keyframes steamUp{
-      0%   { transform: translateY(14px) scale(1); opacity:0; }
+      0%   { transform: translateX(var(--x)) translateY(14px) scale(1); opacity:0; }
       20%  { opacity:.62; }
       65%  { opacity:.32; }
-      100% { transform: translateY(-34px) scale(1.18); opacity:0; }
+      100% { transform: translateX(var(--x)) translateY(-34px) scale(1.18); opacity:0; }
     }
 
-    .teaGlassWrap{
+    .teaImgWrap{
       position: relative;
-      width: 98px;
-      height: 152px;
-      margin-top: 12px;
+      width: 120px;     /* büyüt/küçült buradan */
+      height: 170px;
+      display:grid;
+      place-items:center;
+      margin-top: 14px;
     }
 
-    .teaGlass{
-      position:absolute;
-      inset: 0 8px 18px 8px;
-      clip-path: polygon(
-        8% 0%,
-        92% 0%,
-        84% 12%,
-        69% 48%,
-        78% 100%,
-        22% 100%,
-        31% 48%,
-        16% 12%
-      );
-      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.18),
-        inset 0 -10px 16px rgba(0,0,0,.12),
-        0 12px 22px rgba(0,0,0,.28);
-      overflow:hidden;
-      border:1px solid rgba(255,243,223,.16);
-    }
-
-    .teaGlassOutline{
-      position:absolute;
-      inset: 0 8px 18px 8px;
-      clip-path: polygon(
-        8% 0%,
-        92% 0%,
-        84% 12%,
-        69% 48%,
-        78% 100%,
-        22% 100%,
-        31% 48%,
-        16% 12%
-      );
-      border:2px solid rgba(255,243,223,.18);
-      pointer-events:none;
-    }
-
-    .teaFill{
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:76%;
-      background: linear-gradient(
-        180deg,
-        rgba(255,58,58,.96) 0%,
-        rgba(205,10,10,.94) 38%,
-        rgba(118,0,0,.96) 100%
-      );
-    }
-
-    .teaTop{
-      position:absolute;
-      left:18%;
-      width:64%;
-      top:28px;
-      height:16px;
-      border-radius:999px;
-      background:
-        radial-gradient(60px 14px at 50% 35%, rgba(255,255,255,.14), transparent 60%),
-        linear-gradient(180deg, rgba(255,78,78,.95), rgba(160,0,0,.92));
-      border:1px solid rgba(255,220,220,.16);
-      box-shadow: inset 0 5px 8px rgba(0,0,0,.10);
-    }
-
-    .glassShine{
-      position:absolute;
-      left:28%;
-      top:14px;
-      width:7px;
-      height:76px;
-      border-radius:999px;
-      background: linear-gradient(to bottom, rgba(255,255,255,.24), rgba(255,255,255,0));
-      transform: rotate(8deg);
-      pointer-events:none;
-      z-index:4;
-    }
-
-    .glassRim{
-      position:absolute;
-      left:8%;
-      right:8%;
-      top:-1px;
-      height:8px;
-      border-radius:999px;
-      border-top:2px solid rgba(255,255,255,.42);
-      opacity:.7;
-      z-index:5;
-    }
-
-    .bottomGlow{
-      position:absolute;
-      left:28%;
-      right:28%;
-      bottom:20px;
-      height:10px;
-      border-radius:999px;
-      background: radial-gradient(circle at center, rgba(255,255,255,.18), rgba(255,255,255,0));
-      z-index:3;
-    }
-
-    .glassBaseShadow{
-      position:absolute;
-      left:50%;
-      bottom:4px;
-      transform: translateX(-50%);
-      width:74px;
-      height:11px;
-      border-radius:999px;
-      background: rgba(0,0,0,.24);
-      filter: blur(6px);
-      z-index:0;
+    .teaImg{
+      width:100%;
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 16px 22px rgba(0,0,0,.35));
+      user-select:none;
+      -webkit-user-drag:none;
     }
 
     .mobileLinks{display:none;}
@@ -564,27 +457,18 @@
         <div class="stat teaCard">
           <div style="color:var(--muted); font-weight:900; margin-bottom:10px;">Demli Çay</div>
 
-          <div class="teaStage" aria-label="İnce belli bardakta çay animasyonu">
+          <div class="teaStage" aria-label="Çay bardağı görseli ve buhar animasyonu">
             <div class="steam s1"></div>
             <div class="steam s2"></div>
             <div class="steam s3"></div>
 
-            <div class="teaGlassWrap">
-              <div class="glassBaseShadow"></div>
-
-              <div class="teaGlass">
-                <div class="teaFill"></div>
-                <div class="teaTop"></div>
-                <div class="glassShine"></div>
-                <div class="glassRim"></div>
-                <div class="bottomGlow"></div>
-              </div>
-
-              <div class="teaGlassOutline"></div>
+            <!-- image.png repo kökünde (index.html ile aynı yerde) -->
+            <div class="teaImgWrap">
+              <img class="teaImg" src="image.png" alt="Çay bardağı">
             </div>
           </div>
 
-          <div style="color:var(--muted); margin-top:10px;">Küçük ince belli bardak • Buhar yukarı çıkar</div>
+          <div style="color:var(--muted); margin-top:10px;">Normal çay bardağı • Buhar yukarı çıkar</div>
         </div>
 
         <div class="stat">
@@ -695,12 +579,12 @@
         <div class="card box">
           <h3>İletişim Bilgileri</h3>
           <p style="margin-top:8px;">
-            <b>Telefon:</b> <span style="color:var(--muted)">+90 5XX XXX XX XX</span><br/>
+            <b>Telefon:</b> <span style="color:var(--muted)">+90 535 334 66 50</span><br/>
             <b>E-posta:</b> <span style="color:var(--muted)">ornek@site.com</span><br/>
             <b>Konum:</b> <span style="color:var(--muted)">Balıkesir, TR</span>
           </p>
           <div class="ctaRow" style="margin-top:14px;">
-            <a class="btn btnPrimary" href="tel:+905000000000">Ara</a>
+            <a class="btn btnPrimary" href="tel:+905353346650">Ara</a>
             <a class="btn" href="mailto:ornek@site.com">Mail at</a>
           </div>
         </div>
@@ -774,9 +658,4 @@
     });
   </script>
 </body>
-
 </html>
-
-
-
-
