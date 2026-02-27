@@ -214,7 +214,6 @@
     }
 
     .feature{padding:16px;}
-
     .feature h3{ margin:6px 0 6px; }
 
     .icon{
@@ -242,6 +241,31 @@
     }
 
     .box{padding:18px;}
+
+    /* ✅ NOT / DUYURU KARTI */
+    .noticeBox{
+      background:
+        radial-gradient(500px 220px at 20% 0%, rgba(245,158,11,.12), transparent 60%),
+        rgba(26,18,12,.72);
+      border: 1px solid rgba(245,158,11,.20);
+    }
+    .noticeQuote{
+      margin-top:10px;
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid rgba(199,185,166,.14);
+      background: rgba(15,10,6,.28);
+    }
+    .noticeQuote b{
+      color:#ffe7b5;
+      font-size:16px;
+    }
+    .noticeQuote p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.7;
+    }
+    .noticeQuote p + p{ margin-top:8px; }
 
     .footer{
       border-top: 1px solid rgba(199,185,166,.14);
@@ -318,7 +342,7 @@
 
     .teaImgWrap{
       position: relative;
-      width: 260px;     /* büyüt/küçült buradan */
+      width: 260px;
       height: 220px;
       display:grid;
       place-items:center;
@@ -417,6 +441,17 @@
           <div style="color:var(--muted); font-weight:900;">Ortam</div>
           <b>Sohbet & Oyun</b>
           <div style="color:var(--muted); margin-top:6px;">Okey, iskambil, tavla.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ EKLEDİĞİM NOT / DUYURU -->
+    <section class="section" aria-label="Not / Duyuru">
+      <div class="card box noticeBox">
+        <h2>Not</h2>
+        <div class="noticeQuote">
+          <p><b>“Çay bahane, muhabbet şahane.”</b></p>
+          <p>“Ödeme politikamız gereği veresiye işlemimiz bulunmamaktadır. Anlayışınız için teşekkür ederiz.”</p>
         </div>
       </div>
     </section>
